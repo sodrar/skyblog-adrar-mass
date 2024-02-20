@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import { Content } from './components/Content/Content'
-import { Slider } from './components/Content/Slider/Slider'
+import { Slider } from './components/Slider/Slider'
+import { ColorPicker } from './components/ColorPicker/ColorPicker'
 
 function App() {
 
@@ -31,6 +32,12 @@ function App() {
     })
   }
 
+  const updateTextColor = (colorObject) => {
+    let temp = {...styleContent}
+    temp.color = `rgba(${colorObject.red},${colorObject.green},${colorObject.blue},1)`
+    setStyleContent({...temp})
+  }
+
   return (
     <div className='app'>
       <h1>TP SKYBLOG</h1>
@@ -42,6 +49,9 @@ function App() {
       </div>
       <div>
         <Slider name="Padding" min={0} max={150} onValueChange={updatePadding} />
+      </div>
+      <div>
+        <ColorPicker onValueChange={updateTextColor}/>
       </div>
       <Content style={styleContent} />
     </div>
