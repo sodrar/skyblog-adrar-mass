@@ -24,6 +24,13 @@ function App() {
     console.log
   }
 
+  const updatePadding = (newPadding) => {
+    setStyleContent({
+      ...styleContent,
+      padding: `${newPadding}px`
+    })
+  }
+
   return (
     <div className='app'>
       <h1>TP SKYBLOG</h1>
@@ -32,6 +39,9 @@ function App() {
       </div>
       <div>
         <Slider name="Interlettrage" min={0} max={10} onValueChange={updateInterlettrage} />
+      </div>
+      <div>
+        <Slider name="Padding" min={0} max={150} onValueChange={updatePadding} />
       </div>
       <Content style={styleContent} />
     </div>
