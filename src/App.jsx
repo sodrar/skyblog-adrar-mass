@@ -9,19 +9,30 @@ function App() {
     color: "rgba(255,0,0,1)"
   })
 
-  function updateTextSize(newSize) {
-    console.log(newSize)
+  const updateTextSize = (newSize) => {
     setStyleContent({
       ...styleContent,
       fontSize: parseInt(newSize)
     })
-    console.log(styleContent)
+  }
+
+  const updateInterlettrage = (newInter) => {
+    setStyleContent({
+      ...styleContent,
+      letterSpacing: `${newInter}px`
+    })
+    console.log
   }
 
   return (
     <div className='app'>
       <h1>TP SKYBLOG</h1>
-      <Slider name='Taille du texte' min={0} max={100} onValueChange={updateTextSize} />
+      <div>
+        <Slider name='Taille du texte' min={0} max={100} onValueChange={updateTextSize} />
+      </div>
+      <div>
+        <Slider name="Interlettrage" min={0} max={10} onValueChange={updateInterlettrage} />
+      </div>
       <Content style={styleContent} />
     </div>
   )
