@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export function ColorPicker({ onValueChange }) {
+export function ColorPicker({ onValueChange, name }) {
 
     const [red, setRed] = useState(255)
     const [green, setBlue] = useState(0)
@@ -27,7 +27,8 @@ export function ColorPicker({ onValueChange }) {
     }, [red, green, blue])
 
     return (
-        <div >
+        <div>
+            <h2>{name}</h2>
             <label>Red
                 <input type="range" onInput={updateRed} max="255" defaultValue={red} />
             </label>

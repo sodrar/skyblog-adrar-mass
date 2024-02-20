@@ -7,7 +7,8 @@ import { ColorPicker } from './components/ColorPicker/ColorPicker'
 function App() {
 
   const [styleContent, setStyleContent] = useState({
-    color: "rgba(255,0,0,1)"
+    color: "rgba(255,0,0,1)",
+    backgroundColor: "rgba(255,0,0,0)"
   })
 
   const updateTextSize = (newSize) => {
@@ -38,6 +39,19 @@ function App() {
     setStyleContent({...temp})
   }
 
+  const updateBackgroundColor = (colorObject) => {
+    let temp = {...styleContent}
+    temp.backgroundColor = `rgba(${colorObject.red},${colorObject.green},${colorObject.blue},1)`
+    setStyleContent({...temp})
+  }
+
+  const updateRadius = (radiusValue) => {
+    setStyleContent({
+      ...styleContent,
+      borderRadius: `${radiusValue}px`
+    })
+  }
+
   return (
     <div className='app'>
       <h1>TP SKYBLOG</h1>
@@ -51,7 +65,13 @@ function App() {
         <Slider name="Padding" min={0} max={150} onValueChange={updatePadding} />
       </div>
       <div>
-        <ColorPicker onValueChange={updateTextColor}/>
+        <ColorPicker name="TextColor" onValueChange={updateTextColor}/>
+      </div>
+      <div>
+        <ColorPicker name="backGround color changer" onValueChange={updateBackgroundColor}/>
+      </div>
+      <div>
+        <Slider name="Radius" min={0} max={100} onValueChange={updateRadius} />
       </div>
       <Content style={styleContent} />
     </div>
